@@ -1,0 +1,78 @@
+{
+  "trait_order": [
+    "openness",
+    "conscientiousness",
+    "extraversion",
+    "agreeableness",
+    "emotional_stability"
+  ],
+  "n_clusters": 5,
+  "valid_rows": 874434,
+  "clusters": [
+    {
+      "id": 0,
+      "label": "Reflective Organizer",
+      "description": "Cluster generated from IPIP-FFM Big Five response patterns.",
+      "count": 182383,
+      "trait_means": {
+        "openness": 69.24,
+        "conscientiousness": 65.38,
+        "extraversion": 31.9,
+        "agreeableness": 57.25,
+        "emotional_stability": 62.7
+      }
+    },
+    {
+      "id": 1,
+      "label": "Sensitive Social Adapter",
+      "description": "Cluster generated from IPIP-FFM Big Five response patterns.",
+      "count": 164000,
+      "trait_means": {
+        "openness": 66.85,
+        "conscientiousness": 43.71,
+        "extraversion": 55.17,
+        "agreeableness": 60.35,
+        "emotional_stability": 34.77
+      }
+    },
+    {
+      "id": 2,
+      "label": "Resilient Connector",
+      "description": "Cluster generated from IPIP-FFM Big Five response patterns.",
+      "count": 161932,
+      "trait_means": {
+        "openness": 77.39,
+        "conscientiousness": 63.72,
+        "extraversion": 70.9,
+        "agreeableness": 77.5,
+        "emotional_stability": 74.23
+      }
+    },
+    {
+      "id": 3,
+      "label": "Creative Sensitive Thinker",
+      "description": "Cluster generated from IPIP-FFM Big Five response patterns.",
+      "count": 174842,
+      "trait_means": {
+        "openness": 71.77,
+        "conscientiousness": 53.18,
+        "extraversion": 24.23,
+        "agreeableness": 69.81,
+        "emotional_stability": 28.69
+      }
+    },
+    {
+      "id": 4,
+      "label": "Warm Organized Explorer",
+      "description": "Cluster generated from IPIP-FFM Big Five response patterns.",
+      "count": 191277,
+      "trait_means": {
+        "openness": 76.85,
+        "conscientiousness": 68.04,
+        "extraversion": 64.07,
+        "agreeableness": 81.24,
+        "emotional_stability": 42.3
+      }
+    }
+  ]
+}
