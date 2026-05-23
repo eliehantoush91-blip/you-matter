@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Palette from https://colorhunt.co/palette/8aa624dbe4c9fffff0fea405
+       #8AA624 -> hsl(73 64% 40%)   (green)   -- primary
+       #DBE4C9 -> hsl(80 33% 84%)   (soft)    -- secondary / subtle bg
+       #FFFFF0 -> hsl(60 100% 97%)  (off-white) -- global background
+       #FEA405 -> hsl(38 99% 51%)   (orange)  -- accent / buttons
+    */
+
+    /* Global background / text */
+    --background: 80 20% 96%;         /* very light calming green */
+    --foreground: 0 0% 10%;           /* dark neutral for readable text */
+
+    /* --- hero image variables --- */
+    /* Using a calming nature/mental peace themed Unsplash image */
+    --hero-image: url('/public/photo.jpg');
+    --hero-overlay-light: hsla(80 20% 96% / 0.50); /* soft light overlay for readability */
+    --hero-overlay-dark: hsla(0 0% 0% / 0.55);     /* darker overlay for dark mode */
+
+    /* Cards / Popovers */
+    --card: 80 33% 92%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 80 33% 92%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary / Secondary colors from palette */
+    --primary: 73 64% 40%;            /* #8AA624 */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 73 64% 55%;
+
+    --secondary: 80 33% 84%;          /* #DBE4C9 */
+    --secondary-foreground: 0 0% 10%;
+
+    /* Buttons / accents */
+    --accent: 38 99% 51%;             /* #FEA405 */
+    --accent-foreground: 0 0% 10%;
+
+    --button: 38 99% 51%;
+    --button-foreground: 0 0% 10%;
+
+    /* Hover / strong color (darker primary) */
+    --primary-hover: 73 60% 32%;
+
+    --destructive: 13 96% 33%;
+    --destructive-foreground: 0 0% 100%;
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 73 64% 40%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(80 33% 92%) 0%, hsl(73 64% 40% / 0.08) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(60 100% 97%) 0%, hsl(80 33% 92% / 0.5) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(73 64% 40% / 0.08);
+    --shadow-card: 0 2px 15px -3px hsl(38 99% 51% / 0.12);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark theme mapping (keep palette identity but darkened) */
+    --background: 60 6% 8%;
+    --foreground: 60 100% 96%;
+
+    --card: 60 6% 12%;
+    --card-foreground: 60 100% 96%;
+
+    --popover: 60 6% 12%;
+    --popover-foreground: 60 100% 96%;
+
+    --primary: 73 64% 28%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 73 64% 38%;
+
+    --secondary: 80 33% 22%;
+    --secondary-foreground: 60 100% 96%;
+
+    --muted: 60 6% 18%;
+    --muted-foreground: 60 100% 96%;
+
+    --accent: 38 99% 40%;
+    --accent-foreground: 60 100% 96%;
+
+    --button: 38 99% 40%;
+    --button-foreground: 0 0% 100%;
+
+    --destructive: 13 96% 33%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 60 6% 18%;
+    --input: 60 6% 18%;
+    --ring: 73 64% 28%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    /* keep plain color on the document level; hero image is moved to the page wrapper so it only covers the app content */
+    background-color: hsl(var(--background));
+    @apply text-foreground font-sans antialiased;
+  }
+
+  /* wrapper that covers the whole homepage and all components inside Index.tsx */
+  .site-bg {
+    min-height: 100vh;
+    min-width: 100%;
+    background-image: linear-gradient(var(--hero-overlay-light), var(--hero-overlay-light)), var(--hero-image);
+    background-size: cover;           /* ensure the image always covers the element */
+    background-position: center;      /* center the focal point */
+    background-repeat: no-repeat;
+    background-attachment: fixed;     /* fixed on larger screens for a parallax feel */
+    /* ensure content is readable on top of photo */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* make background scroll on smaller screens to avoid mobile / performance issues */
+  @media (max-width: 768px) {
+    .site-bg {
+      background-attachment: scroll;
+    }
+  }
+
+  /* dark mode: stronger overlay for legibility */
+  .dark .site-bg {
+    background-image: linear-gradient(var(--hero-overlay-dark), var(--hero-overlay-dark)), var(--hero-image);
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+
+}
